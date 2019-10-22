@@ -1,40 +1,44 @@
 @import '~antd/dist/antd.css';
 
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
-}
-
-.appliaction-form .ant-form-item {
-  display: flex;
-}
-
-.appliaction-form .ant-form-item-control-wrapper {
-  flex: 1;
-}
-
 .react-tel-input {
   line-height: 34px;
 }
 
+.citizen-input {
+  display: flex;
+}
+.citizen-input .ant-form-item {
+  margin-bottom: 0;
+}
+
+.react-tel-input input {
+  width: 100% !important;
+}
+
 .application-table .ant-table-thead th {
   background: #c1effd;
+}
+
+@media screen and (min-width: 576px) {
+  .appliaction-form .ant-form-item {
+    display: flex;
+  }
+
+  .appliaction-form .ant-form-item-control-wrapper {
+    flex: 1;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .application-table .ant-table {
+    overflow: scroll;
+  }
+
+  .application-table .ant-table td.custom-td-wrap {
+    white-space: nowrap;
+  }
+
+  .application-table .ant-table th.custom-td-wrap {
+    white-space: nowrap;
+  }
 }

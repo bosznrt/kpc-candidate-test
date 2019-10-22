@@ -8,6 +8,7 @@ import {
   SUBMIT_DATA,
   UPDATE_DATA,
   DELETE_DATA,
+  DELETE_MULTIPLE_DATA,
 } from '../../reducers/appReducer';
 import ApplicationForm from './components/form';
 import ApplicationList from './components/list';
@@ -22,11 +23,9 @@ export default () => {
 
   const selectedPerson = persons.find(person => person.id === current);
 
-  console.log({ current, selectedPerson });
-
   const initialValues = selectedPerson ? { ...selectedPerson } : null;
   return (
-    <Content style={{ margin: 24 }}>
+    <Content style={{ margin: 8 }}>
       <Row type="flex" justify="center">
         <Col
           xxl={8}
@@ -91,6 +90,9 @@ export default () => {
             persons={persons}
             selectPerson={id => changeCurrent(id)}
             deletePerson={id => dispatch({ type: DELETE_DATA, payload: id })}
+            deleteMultiple={ids =>
+              dispatch({ type: DELETE_MULTIPLE_DATA, payload: ids })
+            }
           />
         </Col>
       </Row>

@@ -30,7 +30,7 @@ const DashSign = () => (
     style={{
       display: 'flex',
       justifyContent: 'center',
-      margin: '0 8px',
+      margin: '0 2px',
     }}
   >
     -
@@ -182,7 +182,7 @@ export default Form.create({
         }}
       >
         <Row gutter={16}>
-          <Col span={6}>
+          <Col sm={6} xs={24}>
             <FormItem label="Title">
               {getFieldDecorator('title', {
                 rules: [
@@ -202,7 +202,7 @@ export default Form.create({
               )}
             </FormItem>
           </Col>
-          <Col span={9}>
+          <Col sm={9} xs={24}>
             <FormItem label="Firstname">
               {getFieldDecorator('firstname', {
                 rules: [
@@ -211,14 +211,14 @@ export default Form.create({
                     message: 'Input firstname!',
                   },
                   {
-                    max: 100,
-                    message: 'Must be 100 charactors or loess!',
+                    max: 50,
+                    message: 'Must be 50 charactors or less!',
                   },
                 ],
               })(<Input />)}
             </FormItem>
           </Col>
-          <Col span={9}>
+          <Col sm={9} xs={24}>
             <FormItem label="Lastname">
               {getFieldDecorator('lastname', {
                 rules: [
@@ -227,8 +227,8 @@ export default Form.create({
                     message: 'Input lastname!',
                   },
                   {
-                    max: 100,
-                    message: 'Must be 100 charactors or loess!',
+                    max: 50,
+                    message: 'Must be 50 charactors or loess!',
                   },
                 ],
               })(<Input />)}
@@ -236,7 +236,7 @@ export default Form.create({
           </Col>
         </Row>
         <Row gutter={16}>
-          <Col span={8}>
+          <Col sm={8} xs={24}>
             <FormItem label="Birthday">
               {getFieldDecorator('birthday', {
                 rules: [
@@ -254,10 +254,10 @@ export default Form.create({
               )}
             </FormItem>
           </Col>
-          <Col span={16}>
+          <Col sm={16} xs={24}>
             <FormItem label="Nationality">
               {getFieldDecorator('nationality', {})(
-                <Select placeholder="-- Please Select --">
+                <Select placeholder="-- Please Select --" allowClear>
                   {nationalityOptions.map(title => (
                     <Option value={title.value} key={title.value}>
                       {title.display}
@@ -269,9 +269,9 @@ export default Form.create({
           </Col>
         </Row>
         <Row gutter={16}>
-          <Col span={24}>
+          <Col xs={24}>
             <FormItem label="Citizen ID">
-              <div style={{ display: 'flex' }}>
+              <div className="citizen-input">
                 <FormItem>
                   {getFieldDecorator('citizenFlag1', {})(
                     <Input
@@ -336,7 +336,7 @@ export default Form.create({
           </Col>
         </Row>
         <Row gutter={16}>
-          <Col span={24}>
+          <Col xs={24}>
             <FormItem label="Gender">
               {getFieldDecorator('gender', {})(
                 <RadioGroup>
@@ -351,7 +351,7 @@ export default Form.create({
           </Col>
         </Row>
         <Row gutter={16}>
-          <Col span={24}>
+          <Col sm={10} xs={24}>
             <FormItem label="Mobile Phone">
               {getFieldDecorator('mobilePhone', {
                 rules: [
@@ -365,20 +365,28 @@ export default Form.create({
                   preferredCountries={['th']}
                   defaultCountry={'th'}
                   inputClass="ant-input"
+                  style={{ width: '100%' }}
                 />,
               )}
             </FormItem>
           </Col>
         </Row>
         <Row gutter={16}>
-          <Col span={10}>
+          <Col sm={10} xs={24}>
             <FormItem label="Passport No">
-              {getFieldDecorator('passportNo', {})(<Input />)}
+              {getFieldDecorator('passportNo', {
+                rules: [
+                  {
+                    pattern: /[a-zA-Z]{2}[0-9]{7}/,
+                    message: 'Passport number is invalid',
+                  },
+                ],
+              })(<Input />)}
             </FormItem>
           </Col>
         </Row>
         <Row gutter={16} type="flex" justify="space-between">
-          <Col span={10}>
+          <Col sm={14} xs={24}>
             <FormItem label="Expected Salary ">
               {getFieldDecorator('expectedSalary', {})(
                 <InputNumber
@@ -392,7 +400,7 @@ export default Form.create({
               <span className="ant-form-text"> THB</span>
             </FormItem>
           </Col>
-          <Col span={14} style={{ textAlign: 'right' }}>
+          <Col sm={10} xs={24} style={{ textAlign: 'right' }}>
             <Button type="primary" htmlType="submit">
               SUBMIT
             </Button>{' '}
